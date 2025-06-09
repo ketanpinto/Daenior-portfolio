@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Galaxy Background Animation */
+.galaxy-bg {
+  background: radial-gradient(ellipse at center, #1a0000 0%, #000000 70%);
+  position: relative;
+  overflow: hidden;
+}
+
+.galaxy-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(2px 2px at 20px 30px, #ff0000, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 0, 0, 0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #ff4444, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 68, 68, 0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, #ff0000, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: galaxy-move 20s linear infinite;
+  opacity: 0.3;
+}
+
+.galaxy-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(1px 1px at 50px 50px, #ffffff, transparent),
+    radial-gradient(1px 1px at 100px 100px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 150px 150px, #ffffff, transparent),
+    radial-gradient(1px 1px at 200px 200px, rgba(255, 255, 255, 0.6), transparent);
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  animation: galaxy-move 30s linear infinite reverse;
+  opacity: 0.2;
+}
+
+.parallax-stars {
+  background-image: radial-gradient(1px 1px at 25px 25px, #ffffff, transparent),
+    radial-gradient(1px 1px at 50px 50px, #ffffff, transparent),
+    radial-gradient(1px 1px at 75px 75px, #ffffff, transparent),
+    radial-gradient(1px 1px at 100px 100px, #ffffff, transparent),
+    radial-gradient(1px 1px at 125px 125px, #ffffff, transparent),
+    radial-gradient(1px 1px at 150px 150px, #ffffff, transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.1;
+}
+
+@keyframes galaxy-move {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-200px) translateY(-100px);
+  }
+}
+
+/* Glow Effects */
+.glow-text {
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.glow-text-strong {
+  text-shadow: 0 0 20px rgba(239, 68, 68, 0.8), 0 0 40px rgba(239, 68, 68, 0.4);
+}
+
+.glow-button {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
+}
+
+.glow-button-outline {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+  transition: all 0.3s ease;
+}
+
+.glow-button-outline:hover {
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.5);
+}
+
+.glow-border {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.glow-circle {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+.glow-line {
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+}
+
+.glow-badge {
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+}
+
+.neon-glow {
+  box-shadow: 0 0 5px rgba(239, 68, 68, 0.4), 0 0 10px rgba(239, 68, 68, 0.3), 0 0 15px rgba(239, 68, 68, 0.2), 0 0 20px
+    rgba(239, 68, 68, 0.1);
+}
+
+/* Service Card 3D Effect */
+.perspective {
+  perspective: 1000px;
+}
+
+.service-card {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+/* Navigation Link Hover */
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #ef4444, #dc2626);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Portfolio Card Hover */
+.portfolio-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #dc2626, #991b1b);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #ef4444, #dc2626);
+}
+
+/* Floating Labels */
+.floating-label {
+  position: relative;
+}
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label {
+  transform: translateY(-1.5rem) scale(0.8);
+  color: #ef4444;
+}
+
+/* Custom Cursor Styles */
+.custom-cursor-ring {
+  backdrop-filter: invert(1);
+}
+
+.custom-cursor-dot {
+  backdrop-filter: invert(1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .glow-text-strong {
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.6), 0 0 20px rgba(239, 68, 68, 0.3);
+  }
+}

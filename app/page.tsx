@@ -258,6 +258,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
 
+
       {/* Navigation */}
       <motion.nav
         className={cn(

@@ -4,11 +4,12 @@ import { useEffect, useRef } from "react"
 
 interface ParticleBackgroundProps {
   density?: number
+  maxDensity?: number
   speed?: number
   color?: string
 }
 
-export default function ParticleBackground({ density = 50, speed = 0.5, color = "#ef4444" }: ParticleBackgroundProps) {
+export default function ParticleBackground({ density = 50, maxDensity = 50, speed = 0.5, color = "#ef4444" }: ParticleBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function ParticleBackground({ density = 50, speed = 0.5, color = 
     let particles: Particle[] = []
 
     const resizeCanvas = () => {
+      if (!canvas) return;
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
       initParticles()
@@ -36,8 +38,8 @@ export default function ParticleBackground({ density = 50, speed = 0.5, color = 
       opacity: number
 
       constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+        this.x = canvas ? Math.random() * canvas.width : 0;
+        this.y = canvas ? Math.random() * canvas.height : 0;
         this.size = Math.random() * 2 + 0.5
         this.speedX = (Math.random() - 0.5) * speed
         this.speedY = (Math.random() - 0.5) * speed
@@ -45,6 +47,7 @@ export default function ParticleBackground({ density = 50, speed = 0.5, color = 
       }
 
       update() {
+        if (!canvas) return;
         this.x += this.speedX
         this.y += this.speedY
 
@@ -56,7 +59,7 @@ export default function ParticleBackground({ density = 50, speed = 0.5, color = 
       }
 
       draw() {
-        if (!ctx) return
+        if (!ctx) return;
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
         ctx.fillStyle = color
@@ -66,8 +69,9 @@ export default function ParticleBackground({ density = 50, speed = 0.5, color = 
     }
 
     const initParticles = () => {
+      if (!canvas || !ctx) return;
       particles = []
-      const particleCount = Math.floor((canvas.width * canvas.height) / (10000 / density))
+      const particleCount = Math.floor((canvas.width * canvas.height) / (10000 / Math.min(density, maxDensity)))
 
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle())
@@ -75,7 +79,7 @@ export default function ParticleBackground({ density = 50, speed = 0.5, color = 
     }
 
     const animate = () => {
-      if (!ctx) return
+      if (!ctx || !canvas) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach((particle) => {

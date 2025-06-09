@@ -213,7 +213,6 @@
 /* Portfolio Card Hover */
 .portfolio-card {
   transition: all 0.3s ease;
-  cursor: pointer;
 }
 
 .portfolio-card:hover {
@@ -255,14 +254,7 @@ html {
   color: #ef4444;
 }
 
-/* Custom Cursor Styles */
-.custom-cursor-ring {
-  backdrop-filter: invert(1);
-}
 
-.custom-cursor-dot {
-  backdrop-filter: invert(1);
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {

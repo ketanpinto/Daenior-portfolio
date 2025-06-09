@@ -24,7 +24,6 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import CustomCursor from "@/components/custom-cursor"
 import ParticleBackground from "@/components/particle-background"
 import { cn } from "@/lib/utils"
 
@@ -258,7 +257,6 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <CustomCursor />
 
       {/* Navigation */}
       <motion.nav

@@ -835,7 +835,7 @@ export default function Portfolio() {
                   <MapPin className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-white font-bold">Location</h3>
+                  <h3 className="text-white font-bold">Address</h3>
                   <p className="text-gray-300">Los Angeles, CA</p>
                 </div>
               </div>
